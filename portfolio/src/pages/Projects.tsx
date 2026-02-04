@@ -13,7 +13,7 @@ function Projects() {
 
   return (
     <section className="max-w-6xl mx-auto px-8 py-16 text-white">
-      <h2 className="text-4xl font-bold mb-16">Projects</h2>
+      <h2 className="text-4xl mt-20 font-bold mb-16">Projects</h2>
 
       {Object.entries(types).map(([typeKey, typeLabel]) => {
         // ambil project berdasarkan type
