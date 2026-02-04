@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import projects from "../data/projects.json"
+import projects from "../data/projects.json";
 function Home() {
   return (
     <div className="min-h-screen bg-[#0d1110] text-white pt-32">
@@ -69,7 +69,7 @@ function Home() {
           </div>
         </div>
       </section>
-      
+
       {/* FEATURED PROJECTS */}
       <section className="max-w-6xl mx-auto px-8 py-16">
         <div className="flex justify-between items-center mb-10">
@@ -87,40 +87,183 @@ function Home() {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-white/5 border border-green-500/10 rounded-2xl overflow-hidden hover:border-green-400/40 transition group"
+              className="bg-gradient-to-b from-[#111827] to-[#0f172a] rounded-3xl overflow-hidden shadow-lg"
             >
+              {/* IMAGE */}
               <div className="overflow-hidden">
                 <img
                   src={
                     new URL(`../assets/${project.image}`, import.meta.url).href
                   }
                   alt={project.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition duration-500"
+                  className="w-full h-64 object-cover"
                 />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-green-400">
-                  {project.title}
-                </h3>
+              {/* CONTENT */}
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
 
-                <p className="text-gray-400 leading-relaxed mb-4">
+                <p className="text-gray-400 mb-6 leading-relaxed">
                   {project.description}
                 </p>
 
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-green-400 hover:text-green-300 font-medium"
-                >
-                  Live Demo →
-                </a>
+                {/* TECH STACK BADGE */}
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {project.tech.map((tech: string, index: number) => (
+                    <span
+                      key={index}
+                      className="px-4 py-2 bg-green-500/10 border border-green-400/30 rounded-full text-sm text-green-400"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* BUTTONS */}
+                <div className="flex gap-4">
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-500 text-black px-6 py-3 rounded-xl font-semibold hover:bg-green-600 transition"
+                    >
+                      Demo
+                    </a>
+                  )}
+
+                  {project.repo && (
+                    <a
+                      href={project.repo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white/10 px-6 py-3 rounded-xl text-gray-300 hover:bg-white/20 transition"
+                    >
+                      Repository
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
       </section>
+
+      {/* TECH STACK */}
+      <section className="w-full overflow-hidden py-20 bg-[#0d1110] text-white">
+        <h2 className="text-3xl font-bold text-center mb-16">
+          Tools & Technologies
+        </h2>
+
+        <div className="relative w-full overflow-hidden">
+          <div className="flex gap-12 animate-scroll whitespace-nowrap">
+            {[
+              {
+                name: "Vite",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+              },
+              {
+                name: "React",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+              },
+              {
+                name: "PHP",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+              },
+              {
+                name: "Tailwind",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+              },
+              {
+                name: "TypeScript",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+              },
+              {
+                name: "Git",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+              },
+              {
+                name: "GitHub",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+              },
+              {
+                name: "Express",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+              },
+              {
+                name: "Node.js",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+              },
+              {
+                name: "MySQL",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+              },
+              {
+                name: "PostgreSQL",
+                logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+              },
+            ]
+              .concat([
+                {
+                  name: "Vite",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg",
+                },
+                {
+                  name: "React",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+                },
+                {
+                  name: "PHP",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+                },
+                {
+                  name: "Tailwind",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+                },
+                {
+                  name: "TypeScript",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+                },
+                {
+                  name: "Git",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+                },
+                {
+                  name: "GitHub",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+                },
+                {
+                  name: "Express",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+                },
+                {
+                  name: "Node.js",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+                },
+                {
+                  name: "MySQL",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+                },
+                {
+                  name: "PostgreSQL",
+                  logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+                },
+              ])
+
+              .map((tech, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center min-w-[120px]"
+                >
+                  <img src={tech.logo} alt={tech.name} className="h-12 mb-3" />
+                  <span className="text-sm text-gray-400">{tech.name}</span>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-8 py-20 text-center">
         <h2 className="text-3xl font-bold mb-4">Let’s Work Together</h2>

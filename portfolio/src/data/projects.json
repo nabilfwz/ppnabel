@@ -1,21 +1,20 @@
 [
-    {
-      "id": 1,
-      "title": "LMS Frontend System",
-      "description": "Learning Management System dashboard with structured UI and responsive layout.",
-      "image": "lms.png",
-      "live": "https://lms-frontend-fix-bismillah.vercel.app/",
-      "type": "personal",
-      "category": "web"
-    },
-    
+  {
+    "id": 1,
+    "title": "LMS Frontend System",
+    "description": "Learning Management System dashboard with structured UI and responsive layout.",
+    "image": "lms.png",
+    "live": "https://lms-frontend-fix-bismillah.vercel.app/",
+    "repo": "",
+    "tech": ["React", "Vite", "JavaScript", "Express.js", "MongoDB"]
+  },
   {
     "id": 2,
     "title": "Personal Portfolio Website",
-    "description": "Responsive personal branding portfolio website.",
+    "description": "Responsive personal branding portfolio built with modern frontend stack.",
     "image": "ppnawal.png",
     "live": "https://ppnawal.vercel.app/",
-    "type": "personal",
-    "category": "web"
+    "repo": "",
+    "tech": ["Vite", "React", "Tailwind CSS", "TypeScript"]
   }
 ]
