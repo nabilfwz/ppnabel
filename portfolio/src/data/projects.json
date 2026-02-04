@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "title": "LMS Frontend System",
+      "description": "Learning Management System dashboard with structured UI and responsive layout.",
+      "image": "lms.png",
+      "live": "https://lms-frontend-fix-bismillah.vercel.app/",
+      "type": "personal",
+      "category": "web"
+    },
+    
+  {
+    "id": 2,
+    "title": "Personal Portfolio Website",
+    "description": "Responsive personal branding portfolio website.",
+    "image": "ppnawal.png",
+    "live": "https://ppnawal.vercel.app/",
+    "type": "personal",
+    "category": "web"
+  }
+]
