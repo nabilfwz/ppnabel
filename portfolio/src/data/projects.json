@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "title": "LMS Frontend System",
+    "title": "Learning Management System",
     "description": "Learning Management System dashboard with structured UI and responsive layout.",
     "image": "lms.png",
     "live": "https://lms-frontend-fix-bismillah.vercel.app/",
