@@ -1,10 +1,10 @@
 [
   {
     "id": 1,
-    "title": "Toko Frozen Food Online",
-    "description": "Full-stack e-commerce platform with authentication, product management, and checkout system. Currently running live for frozen food retail business.",
+    "title": "Rumoh Frozen Nila",
+    "description": "E-commerce platform untuk toko frozen food yang saat ini aktif digunakan untuk operasional harian. Fitur lengkap: autentikasi, manajemen produk, keranjang belanja, checkout, dan dashboard admin.",
     "image": "toko.png",
-    "live": "",
+    "live": "https://rumohfrozennila.vercel.app",
     "repo": "",
     "tech": ["Next.js", "Prisma", "NextAuth", "PostgreSQL", "Supabase", "Tailwind CSS"],
     "status": "production"
@@ -12,7 +12,7 @@
   {
     "id": 2,
     "title": "SIMPEG BPVP",
-    "description": "Employee Management Information System with regional data integration and comprehensive admin dashboard.",
+    "description": "Sistem Informasi Manajemen Kepegawaian untuk Balai Pelatihan Vokasi dan Produktivitas. Terintegrasi dengan data wilayah Indonesia dan dashboard admin komprehensif.",
     "image": "simpeg.png",
     "live": "",
     "repo": "",
@@ -22,7 +22,7 @@
   {
     "id": 3,
     "title": "SSO Authentication Server",
-    "description": "Single Sign-On authentication server integrated with SIMPEG system for centralized user management.",
+    "description": "Single Sign-On server untuk sistem autentikasi terpusat, terintegrasi dengan SIMPEG untuk manajemen user dan akses multi-aplikasi.",
     "image": "sso.png",
     "live": "",
     "repo": "",
@@ -31,29 +31,9 @@
   },
   {
     "id": 4,
-    "title": "NFStore E-commerce",
-    "description": "Modern e-commerce platform with frontend and backend separation, product catalog, and user management.",
-    "image": "nfstore.png",
-    "live": "",
-    "repo": "",
-    "tech": ["Next.js", "Express.js", "React", "Node.js", "PostgreSQL"],
-    "status": "development"
-  },
-  {
-    "id": 5,
-    "title": "LMS Platform",
-    "description": "Learning Management System with course management, student dashboard, and progress tracking features.",
-    "image": "lms.png",
-    "live": "https://lms-frontend-fix-bismillah.vercel.app/",
-    "repo": "",
-    "tech": ["React", "Express.js", "MongoDB", "Vite", "JavaScript"],
-    "status": "production"
-  },
-  {
-    "id": 6,
     "title": "Personal Portfolio",
-    "description": "Previous iteration of personal portfolio website with responsive design and project showcase.",
-    "image": "ppnawal.png",
+    "description": "Website portfolio pribadi dengan design modern dan responsive untuk showcase project dan pengalaman kerja.",
+    "image": "portfolio.png",
     "live": "https://ppnawal.vercel.app/",
     "repo": "",
     "tech": ["React", "Vite", "Tailwind CSS", "TypeScript"],
