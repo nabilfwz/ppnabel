@@ -1,303 +1,256 @@
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import projects from "../data/projects.json";
 
 function Home() {
-  const [scrollY, setScrollY] = useState(0);
+  const [activeTab, setActiveTab] = useState<"all" | "production" | "personal">("all");
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const filteredProjects = projects.filter(p => {
+    if (activeTab === "production") return p.status === "production" || p.status === "near-completion";
+    if (activeTab === "personal") return p.status === "in-development" || !p.live;
+    return true;
+  });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#0a192f] via-[#112240] to-[#0a192f] text-white">
-      {/* HERO */}
-      <section className="relative min-h-screen flex items-center justify-center px-8 overflow-hidden">
-        {/* Animated background grid */}
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'linear-gradient(#64ffda 1px, transparent 1px), linear-gradient(90deg, #64ffda 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
-            transform: `translateY(${scrollY * 0.5}px)`
-          }}
-        />
-        
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          {/* Animated greeting */}
-          <div className="mb-6 inline-block">
-            <span className="text-cyan-400 text-lg font-mono tracking-wider animate-pulse">
-              &lt;developer /&gt;
-            </span>
-          </div>
+    <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-[#f59e0b] selection:text-black">
+      {/* FLOATING CAPSULE NAVBAR */}
+      <nav className="fixed top-5 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-6 bg-[#121212]/90 backdrop-blur-md px-6 py-3 rounded-full border border-white/10 shadow-2xl">
+        <a href="#about" className="text-xs sm:text-sm font-semibold hover:text-[#f59e0b] transition-colors">About</a>
+        <a href="#projects" className="text-xs sm:text-sm font-semibold hover:text-[#f59e0b] transition-colors">Projects</a>
+        <a href="#experience" className="text-xs sm:text-sm font-semibold hover:text-[#f59e0b] transition-colors">Experience</a>
+        <a href="#contact" className="text-xs sm:text-sm font-semibold hover:text-[#f59e0b] transition-colors">Contact</a>
+      </nav>
 
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-300 to-cyan-500 bg-clip-text text-transparent leading-tight">
-            Nabel Iskandar
+      {/* HERO / ESSENCE SECTION */}
+      <section id="about" className="min-h-screen flex flex-col justify-between pt-24 relative overflow-hidden">
+        {/* Top Header Bar */}
+        <div className="w-full bg-[#161616] py-4 px-8 md:px-16 flex items-center justify-between border-b border-white/10 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+          <h1 className="text-xl md:text-2xl font-black uppercase tracking-wider text-[#f59e0b]">
+            Hola, I'm Muhammad Nabil Fawwaz 👋🏼
           </h1>
+          <div className="hidden md:flex gap-2 opacity-30">
+            <div className="w-16 h-[2px] bg-white rounded-full" />
+            <div className="w-8 h-[2px] bg-white rounded-full" />
+            <div className="w-3 h-[2px] bg-white rounded-full" />
+          </div>
+        </div>
 
-          <p className="text-xl md:text-2xl text-gray-300 mb-4 font-light">
-            Full-Stack Developer & Data Specialist
-          </p>
-
-          <p className="text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed">
-            Membangun sistem web modern dengan Next.js, mengelola data dengan presisi, 
-            dan mengimplementasikan solusi yang scalable untuk kebutuhan bisnis.
-          </p>
-
-          <div className="flex gap-4 justify-center flex-wrap">
-            <Link
-              to="/projects"
-              className="group relative bg-cyan-500 text-gray-900 px-8 py-4 rounded-lg font-semibold overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50 hover:scale-105"
-            >
-              <span className="relative z-10">Lihat Portfolio</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Link>
-
-            <Link
-              to="/contact"
-              className="border-2 border-cyan-500/50 px-8 py-4 rounded-lg hover:border-cyan-400 hover:bg-cyan-500/10 transition-all duration-300 hover:scale-105"
-            >
-              Hubungi Saya
-            </Link>
+        {/* Main Hero Content */}
+        <div className="max-w-7xl mx-auto px-8 py-16 grid md:grid-cols-2 gap-12 items-center relative z-10 w-full flex-1">
+          {/* Open to Work Badge */}
+          <div className="absolute -left-6 top-10 bg-[#f59e0b] text-black font-black uppercase text-xs py-2 px-8 rotate-[-12deg] shadow-lg tracking-widest z-20">
+            Open to Freelance & Clients
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div className="w-6 h-10 border-2 border-cyan-500/50 rounded-full flex justify-center pt-2">
-              <div className="w-1 h-2 bg-cyan-400 rounded-full" />
+          <div className="space-y-6">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tight text-[#f59e0b]">
+              WHO AM I?
+            </h2>
+            <p className="text-gray-300 text-base md:text-lg leading-relaxed font-light">
+              Full-Stack Developer & Data Specialist dengan pengalaman dalam membangun aplikasi web production-ready, sistem informasi kepegawaian (SIMPEG), Single Sign-On (SSO), hingga e-commerce. Ahli dalam menggunakan Next.js, TypeScript, Prisma, dan PostgreSQL.
+            </p>
+            <div className="flex gap-4 pt-4">
+              <a
+                href="#contact"
+                className="bg-[#f59e0b] hover:bg-[#e08e09] text-black font-bold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg shadow-[#f59e0b]/20 flex items-center gap-2"
+              >
+                Let's Talk <span>↓</span>
+              </a>
+              <a
+                href="https://github.com/nabilfwz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/5 hover:bg-white/10 border border-white/20 text-white font-bold px-6 py-3 rounded-full transition-all duration-300 hover:scale-105"
+              >
+                GitHub Profile
+              </a>
+            </div>
+          </div>
+
+          {/* Right Visual / Tech Stack Highlight */}
+          <div className="bg-[#121212] border border-white/10 p-8 rounded-3xl relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 bg-[#f59e0b]/10 w-32 h-32 rounded-full blur-2xl pointer-events-none" />
+            <h3 className="text-lg font-bold mb-4 text-[#f59e0b]">Core Expertise</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { name: "Next.js / React", desc: "Frontend & SSR" },
+                { name: "PostgreSQL & Prisma", desc: "Database & ORM" },
+                { name: "SSO & Auth", desc: "Security Systems" },
+                { name: "Data Processing", desc: "ETL & Large Dataset" },
+              ].map((item, idx) => (
+                <div key={idx} className="bg-black/40 border border-white/5 p-4 rounded-xl">
+                  <h4 className="font-bold text-white text-sm">{item.name}</h4>
+                  <p className="text-xs text-gray-400 mt-1">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Bottom Bar */}
+        <div className="w-full border-t border-white/10 bg-[#121212] py-4 px-8 flex justify-between items-center text-xs text-gray-400">
+          <span>Scroll to explore projects</span>
+          <span className="text-[#f59e0b] font-bold">Muhammad Nabil Fawwaz Portfolio</span>
+        </div>
       </section>
 
-      {/* SERVICES */}
-      <section className="max-w-6xl mx-auto px-8 py-20">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Keahlian
-          </span>
-        </h2>
+      {/* PROJECTS SECTION */}
+      <section id="projects" className="min-h-screen py-24 px-8 max-w-7xl mx-auto">
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-5xl font-black mb-4 text-[#f59e0b]">FEATURED PROJECTS</h2>
+          <p className="text-gray-400 text-sm md:text-base">Kumpulan project nyata yang sudah dibangun, digunakan, dan di-deploy.</p>
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Category Tabs */}
+        <div className="flex gap-3 mb-12 flex-wrap">
           {[
-            {
-              title: "Web Development",
-              desc: "Membangun aplikasi web modern dengan Next.js, React, dan TypeScript. Full-stack development dengan fokus pada performa dan user experience.",
-              icon: "💻"
-            },
-            {
-              title: "Database & Backend",
-              desc: "Merancang dan mengimplementasikan database relasional dengan PostgreSQL, Prisma ORM, dan RESTful API architecture.",
-              icon: "🗄️"
-            },
-            {
-              title: "Data Management",
-              desc: "Analisis data, data entry, dan ETL processes. Pengalaman dengan dataset besar dan integrasi data regional.",
-              icon: "📊"
-            }
-          ].map((service, idx) => (
-            <div
-              key={idx}
-              className="group relative bg-gradient-to-br from-[#112240] to-[#1a2f4d] p-8 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20"
+            { id: "all", label: "All Projects" },
+            { id: "production", label: "Production & Client" },
+            { id: "personal", label: "Personal & Development" },
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`px-6 py-2.5 rounded-full text-sm font-bold transition-all ${
+                activeTab === tab.id
+                  ? "bg-[#f59e0b] text-black shadow-lg shadow-[#f59e0b]/20"
+                  : "bg-[#121212] border border-white/10 text-white/70 hover:text-white hover:border-white/30"
+              }`}
             >
-              <div className="text-5xl mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-semibold mb-3 text-cyan-400">
-                {service.title}
-              </h3>
-              <p className="text-gray-300 leading-relaxed">
-                {service.desc}
-              </p>
-              
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-blue-500/0 group-hover:from-cyan-500/10 group-hover:to-blue-500/10 rounded-2xl transition-all duration-300 pointer-events-none" />
-            </div>
+              {tab.label}
+            </button>
           ))}
         </div>
-      </section>
 
-      {/* FEATURED PROJECTS */}
-      <section className="max-w-7xl mx-auto px-8 py-20">
-        <div className="flex justify-between items-center mb-12">
-          <h2 className="text-4xl font-bold">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Featured Projects
-            </span>
-          </h2>
-
-          <Link
-            to="/projects"
-            className="text-cyan-400 hover:text-cyan-300 font-medium transition group"
-          >
-            Semua Project 
-            <span className="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
-          </Link>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.slice(0, 6).map((project, idx) => (
+        {/* Project Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="group relative bg-[#112240] rounded-2xl overflow-hidden border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${idx * 0.1}s both`
-              }}
+              className="bg-[#121212] border border-white/10 rounded-2xl overflow-hidden flex flex-col justify-between group hover:border-[#f59e0b]/50 transition-all duration-300 hover:-translate-y-1 shadow-xl"
             >
-              {/* Image placeholder */}
-              <div className="relative h-48 bg-gradient-to-br from-cyan-900/30 to-blue-900/30 flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/10 group-hover:from-cyan-500/20 group-hover:to-blue-500/20 transition-all duration-300" />
-                <span className="text-6xl opacity-50 group-hover:scale-125 transition-transform duration-300">
-                  {project.title.includes("Toko") ? "🛒" : 
-                   project.title.includes("SIMPEG") ? "👥" :
-                   project.title.includes("SSO") ? "🔐" :
-                   project.title.includes("LMS") ? "📚" :
-                   project.title.includes("NFStore") ? "🛍️" : "🌐"}
-                </span>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                {/* Status badge */}
-                <div className="mb-3">
-                  <span className={`text-xs px-3 py-1 rounded-full font-medium ${
-                    project.status === "production" 
-                      ? "bg-green-500/20 text-green-400 border border-green-500/50"
-                      : project.status === "near-completion"
-                      ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/50"
-                      : "bg-blue-500/20 text-blue-400 border border-blue-500/50"
-                  }`}>
-                    {project.status === "production" ? "🟢 Live" : 
-                     project.status === "near-completion" ? "⚡ Near Completion" : "🚧 In Development"}
+              <div>
+                {/* Header banner / icon */}
+                <div className="h-40 bg-gradient-to-br from-[#1c1c1c] to-[#121212] flex items-center justify-center relative overflow-hidden border-b border-white/10">
+                  <div className="absolute top-3 left-3">
+                    <span className={`text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${
+                      project.status === "production" ? "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30" :
+                      project.status === "near-completion" ? "bg-amber-500/20 text-amber-400 border border-amber-500/30" :
+                      "bg-blue-500/20 text-blue-400 border border-blue-500/30"
+                    }`}>
+                      {project.status}
+                    </span>
+                  </div>
+                  <span className="text-5xl group-hover:scale-125 transition-transform duration-300">
+                    {project.title.includes("Toko") ? "🛒" :
+                     project.title.includes("SIMPEG") ? "👥" :
+                     project.title.includes("SSO") ? "🔐" :
+                     project.title.includes("LMS") ? "📚" : "🌐"}
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold mb-2 group-hover:text-cyan-400 transition-colors">
-                  {project.title}
-                </h3>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-3 text-white group-hover:text-[#f59e0b] transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+                </div>
+              </div>
 
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Tech stack */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.slice(0, 3).map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded text-cyan-400"
-                    >
-                      {tech}
+              <div className="p-6 pt-0">
+                <div className="flex flex-wrap gap-1.5 mb-6">
+                  {project.tech.map((t, idx) => (
+                    <span key={idx} className="text-[10px] font-mono bg-white/5 border border-white/10 px-2 py-0.5 rounded text-gray-300">
+                      {t}
                     </span>
                   ))}
-                  {project.tech.length > 3 && (
-                    <span className="text-xs px-2 py-1 text-gray-500">
-                      +{project.tech.length - 3}
-                    </span>
-                  )}
                 </div>
 
-                {/* Links */}
                 {project.live && (
                   <a
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-cyan-400 hover:text-cyan-300 text-sm font-medium group/link"
+                    className="block text-center bg-white/5 hover:bg-[#f59e0b] hover:text-black border border-white/10 hover:border-[#f59e0b] py-2 rounded-xl text-xs font-bold transition-all"
                   >
-                    Live Demo 
-                    <span className="ml-1 group-hover/link:translate-x-1 transition-transform">→</span>
+                    Visit Live Demo →
                   </a>
                 )}
               </div>
-
-              {/* Hover gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/0 via-transparent to-transparent group-hover:from-cyan-500/10 transition-all duration-300 pointer-events-none" />
             </div>
           ))}
         </div>
       </section>
 
-      {/* TECH STACK */}
-      <section className="py-20 overflow-hidden relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-900/10 to-transparent" />
-        
-        <h2 className="text-4xl font-bold text-center mb-16">
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Tech Stack
-          </span>
-        </h2>
-
-        <div className="relative">
-          <div className="flex gap-16 animate-scroll">
+      {/* EXPERIENCE SECTION */}
+      <section id="experience" className="py-24 bg-[#121212] border-t border-b border-white/10">
+        <div className="max-w-4xl mx-auto px-8">
+          <h2 className="text-3xl md:text-5xl font-black mb-12 text-[#f59e0b]">EXPERIENCE</h2>
+          <div className="space-y-8 border-l border-white/20 pl-6 ml-2">
             {[
-              { name: "Next.js", icon: "⚡" },
-              { name: "React", icon: "⚛️" },
-              { name: "TypeScript", icon: "📘" },
-              { name: "PostgreSQL", icon: "🐘" },
-              { name: "Prisma", icon: "🔷" },
-              { name: "Tailwind CSS", icon: "🎨" },
-              { name: "Node.js", icon: "🟢" },
-              { name: "Git", icon: "📦" },
-            ].concat([
-              { name: "Next.js", icon: "⚡" },
-              { name: "React", icon: "⚛️" },
-              { name: "TypeScript", icon: "📘" },
-              { name: "PostgreSQL", icon: "🐘" },
-              { name: "Prisma", icon: "🔷" },
-              { name: "Tailwind CSS", icon: "🎨" },
-              { name: "Node.js", icon: "🟢" },
-              { name: "Git", icon: "📦" },
-            ]).map((tech, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center min-w-[140px] group cursor-pointer"
-              >
-                <div className="text-5xl mb-3 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">
-                  {tech.icon}
-                </div>
-                <span className="text-sm text-gray-400 group-hover:text-cyan-400 transition-colors">
-                  {tech.name}
-                </span>
+              {
+                period: "2026",
+                role: "Full-Stack Developer",
+                company: "BPVP (Balai Pelatihan Vokasi dan Produktivitas)",
+                desc: "Mengembangkan SIMPEG dan SSO Auth Server dengan Next.js, Prisma, dan PostgreSQL. Mengintegrasikan data wilayah se-Indonesia."
+              },
+              {
+                period: "2026",
+                role: "Full-Stack Developer",
+                company: "Toko Frozen Food (Production)",
+                desc: "Membangun sistem e-commerce full-stack live untuk operasional toko sendiri."
+              },
+              {
+                period: "2025 - 2026",
+                role: "Full-Stack Developer",
+                company: "LMS & Digital Products",
+                desc: "Membuat platform Learning Management System lengkap dengan manajemen kursus dan RESTful API."
+              }
+            ].map((exp, idx) => (
+              <div key={idx} className="relative group">
+                <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-[#f59e0b] ring-4 ring-[#121212]" />
+                <span className="text-xs font-mono text-[#f59e0b] font-bold">{exp.period}</span>
+                <h3 className="text-lg font-bold text-white mt-1">{exp.role} — <span className="text-gray-400 font-normal">{exp.company}</span></h3>
+                <p className="text-sm text-gray-400 mt-2 leading-relaxed">{exp.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="max-w-4xl mx-auto px-8 py-24 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          Mari Berkolaborasi
-        </h2>
-
-        <p className="text-gray-300 text-lg mb-10 max-w-2xl mx-auto">
-          Terbuka untuk project web development, sistem informasi, dan integrasi data. 
-          Saat ini sedang mencari klien untuk membangun startup IT.
+      {/* CONTACT SECTION */}
+      <section id="contact" className="py-24 max-w-4xl mx-auto px-8 text-center">
+        <h2 className="text-3xl md:text-5xl font-black mb-6 text-[#f59e0b]">HIT ME UP</h2>
+        <p className="text-gray-400 text-sm md:text-base max-w-xl mx-auto mb-12">
+          Punya project, ingin diskusi teknologi, atau butuh developer untuk kolaborasi? Hubungi saya kapan saja.
         </p>
 
-        <Link
-          to="/contact"
-          className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-10 py-4 rounded-lg font-semibold hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 hover:scale-105"
-        >
-          Mulai Diskusi Project
-        </Link>
-      </section>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          {[
+            { name: "WhatsApp", url: "https://wa.me/6282377276027", icon: "💬" },
+            { name: "Email", url: "mailto:nabilfwz12@gmail.com", icon: "📧" },
+            { name: "LinkedIn", url: "https://www.linkedin.com/in/nabelfwz/", icon: "💼" },
+            { name: "GitHub", url: "https://github.com/nabilfwz", icon: "🐙" },
+          ].map((c, idx) => (
+            <a
+              key={idx}
+              href={c.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#121212] border border-white/10 hover:border-[#f59e0b] p-6 rounded-2xl flex flex-col items-center justify-center gap-2 group transition-all hover:scale-105 shadow-xl"
+            >
+              <span className="text-3xl group-hover:scale-110 transition-transform">{c.icon}</span>
+              <span className="text-xs font-bold text-white group-hover:text-[#f59e0b] transition-colors">{c.name}</span>
+            </a>
+          ))}
+        </div>
 
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+        <div className="text-xs text-gray-500 pt-8 border-t border-white/10">
+          © {new Date().getFullYear()} Muhammad Nabil Fawwaz. All rights reserved.
+        </div>
+      </section>
     </div>
   );
 }
