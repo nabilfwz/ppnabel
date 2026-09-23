@@ -3,6 +3,7 @@ import projects from "../data/projects.json";
 
 function Home() {
   const [activeTab, setActiveTab] = useState<"all" | "production" | "personal">("all");
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   const filteredProjects = projects.filter(p => {
     if (activeTab === "production") return p.status === "production" || p.status === "near-completion";
@@ -72,7 +73,7 @@ function Home() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">Project Pilihan</h2>
-            <p className="text-gray-400 text-sm">Beberapa aplikasi dan sistem yang udah selesai dibikin.</p>
+            <p className="text-gray-400 text-sm">Beberapa aplikasi dan sistem yang udah selesai dibikin. Klik untuk melihat detail lengkap.</p>
           </div>
 
           {/* Category Tabs */}
@@ -100,9 +101,10 @@ function Home() {
         {/* Project Grid */}
         <div className="grid md:grid-cols-2 gap-6">
           {filteredProjects.map((project) => (
-            <div
+            <button
               key={project.id}
-              className="bg-[#161b22] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-white/30 transition-all duration-300 group"
+              onClick={() => setSelectedProject(project)}
+              className="bg-[#161b22] border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-white/30 transition-all duration-300 group text-left cursor-pointer"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -114,10 +116,11 @@ function Home() {
                     {project.status}
                   </span>
                   <span className="text-2xl">
-                    {project.title.includes("Toko") ? "🛒" :
+                    {project.title.includes("Toko") || project.title.includes("Rumoh") ? "🛒" :
                      project.title.includes("SIMPEG") ? "👥" :
                      project.title.includes("SSO") ? "🔐" :
-                     project.title.includes("LMS") ? "📚" : "💻"}
+                     project.title.includes("LMS") ? "📚" :
+                     project.title.includes("Portfolio") ? "💼" : "💻"}
                   </span>
                 </div>
 
@@ -138,18 +141,12 @@ function Home() {
                   ))}
                 </div>
 
-                {project.live && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#58a6ff] hover:underline"
-                  >
-                    Buka Demo Website <span>→</span>
-                  </a>
-                )}
+                <div className="flex items-center gap-2 text-xs font-semibold text-[#58a6ff]">
+                  <span>Lihat Detail</span>
+                  <span>→</span>
+                </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </section>
@@ -222,6 +219,98 @@ function Home() {
           © {new Date().getFullYear()} Muhammad Nabil Fawwaz. Built with React & Tailwind CSS.
         </div>
       </section>
+
+      {/* PROJECT DETAIL MODAL */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+          <div className="bg-[#161b22] border border-white/10 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            {/* Header */}
+            <div className="sticky top-0 bg-[#0d1117] border-b border-white/10 p-6 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <span className="text-3xl">
+                  {selectedProject.title.includes("Toko") || selectedProject.title.includes("Rumoh") ? "🛒" :
+                   selectedProject.title.includes("SIMPEG") ? "👥" :
+                   selectedProject.title.includes("SSO") ? "🔐" :
+                   selectedProject.title.includes("LMS") ? "📚" :
+                   selectedProject.title.includes("Portfolio") ? "💼" : "💻"}
+                </span>
+                <div>
+                  <h2 className="text-2xl font-bold text-white">{selectedProject.title}</h2>
+                  <span className={`inline-block mt-1 text-[10px] font-mono px-2.5 py-1 rounded-md uppercase tracking-wider ${
+                    selectedProject.status === "production" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" :
+                    selectedProject.status === "near-completion" ? "bg-amber-500/10 text-amber-400 border border-amber-500/20" :
+                    "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                  }`}>
+                    {selectedProject.status}
+                  </span>
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedProject(null)}
+                className="text-gray-400 hover:text-white text-2xl transition-colors"
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="p-6 space-y-6">
+              {/* Full Description */}
+              <div>
+                <h3 className="text-lg font-bold text-white mb-3">Tentang Project</h3>
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  {selectedProject.fullDescription}
+                </p>
+              </div>
+
+              {/* Features */}
+              <div>
+                <h3 className="text-lg font-bold text-white mb-3">Fitur Utama</h3>
+                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  {selectedProject.features?.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-2 text-sm text-gray-300">
+                      <span className="text-[#58a6ff] mt-0.5">▸</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Tech Stack */}
+              <div>
+                <h3 className="text-lg font-bold text-white mb-3">Tech Stack</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tech.map((t, idx) => (
+                    <span key={idx} className="text-xs font-mono bg-[#21262d] border border-white/10 px-3 py-2 rounded text-gray-300">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Links */}
+              <div className="flex gap-3 pt-4">
+                {selectedProject.live && (
+                  <a
+                    href={selectedProject.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 bg-[#238636] hover:bg-[#2ea043] text-white font-medium px-4 py-3 rounded-lg transition-all text-sm text-center"
+                  >
+                    Buka Live Demo →
+                  </a>
+                )}
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="flex-1 bg-[#21262d] hover:bg-[#30363d] border border-white/10 text-white font-medium px-4 py-3 rounded-lg transition-all text-sm"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

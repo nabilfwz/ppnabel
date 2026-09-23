@@ -2,7 +2,17 @@
   {
     "id": 1,
     "title": "Rumoh Frozen Nila",
-    "description": "E-commerce platform untuk toko frozen food yang saat ini aktif digunakan untuk operasional harian. Fitur lengkap: autentikasi, manajemen produk, keranjang belanja, checkout, dan dashboard admin.",
+    "description": "E-commerce platform untuk toko frozen food yang aktif digunakan operasional harian.",
+    "fullDescription": "Platform e-commerce lengkap untuk toko frozen food dengan fitur autentikasi user, manajemen produk katalog, shopping cart, checkout system, dan admin dashboard. Saat ini sudah production dan aktif digunakan untuk transaksi harian di toko. Sistem pembayaran terintegrasi, real-time inventory tracking, dan order management yang memudahkan operasional.",
+    "features": [
+      "Authentication & User Management",
+      "Product Catalog & Filtering",
+      "Shopping Cart & Checkout",
+      "Payment Integration",
+      "Admin Dashboard",
+      "Inventory Tracking",
+      "Order Management"
+    ],
     "image": "toko.png",
     "live": "https://rumohfrozennila.vercel.app",
     "repo": "",
@@ -12,7 +22,17 @@
   {
     "id": 2,
     "title": "SIMPEG BPVP",
-    "description": "Sistem Informasi Manajemen Kepegawaian untuk Balai Pelatihan Vokasi dan Produktivitas. Terintegrasi dengan data wilayah Indonesia dan dashboard admin komprehensif.",
+    "description": "Sistem Informasi Manajemen Kepegawaian untuk institusi dengan integrasi data wilayah Indonesia.",
+    "fullDescription": "Sistem Informasi Manajemen Kepegawaian (SIMPEG) komprehensif untuk Balai Pelatihan Vokasi dan Produktivitas. Fitur meliputi manajemen data pegawai, struktur organisasi, pengelolaan wilayah (provinsi, kabupaten, kecamatan, kelurahan), dashboard analytics, dan laporan kepegawaian. Terintegrasi dengan 35MB data wilayah Indonesia untuk efisiensi input data. Sedang dalam tahap finalisasi dan siap untuk implementasi full.",
+    "features": [
+      "Employee Data Management",
+      "Organizational Structure",
+      "Regional Data Integration (35MB)",
+      "Analytics Dashboard",
+      "Reporting System",
+      "User Permissions & Roles",
+      "Data Export/Import"
+    ],
     "image": "simpeg.png",
     "live": "",
     "repo": "",
@@ -22,7 +42,17 @@
   {
     "id": 3,
     "title": "SSO Authentication Server",
-    "description": "Single Sign-On server untuk sistem autentikasi terpusat, terintegrasi dengan SIMPEG untuk manajemen user dan akses multi-aplikasi.",
+    "description": "Server Single Sign-On terpusat untuk autentikasi multi-aplikasi dan manajemen user.",
+    "fullDescription": "Single Sign-On (SSO) Authentication Server yang berfungsi sebagai gateway autentikasi terpusat untuk sistem multi-aplikasi. Terintegrasi dengan SIMPEG untuk manajemen user, support JWT token authentication, session management, dan kontrol akses berbasis role. Memungkinkan user login sekali untuk akses ke seluruh ekosistem aplikasi internal tanpa perlu login berulang-ulang.",
+    "features": [
+      "Centralized Authentication",
+      "JWT Token Management",
+      "Session Control",
+      "Role-Based Access Control",
+      "Multi-Application Support",
+      "OAuth2 Integration",
+      "Security & Encryption"
+    ],
     "image": "sso.png",
     "live": "",
     "repo": "",
@@ -32,7 +62,17 @@
   {
     "id": 4,
     "title": "Personal Portfolio",
-    "description": "Website portfolio pribadi dengan design modern dan responsive untuk showcase project dan pengalaman kerja.",
+    "description": "Website portfolio pribadi dengan design modern, responsive, dan showcase project profesional.",
+    "fullDescription": "Website portfolio personal yang didesain untuk showcase project, pengalaman kerja, dan skills sebagai developer. Build dengan React, TypeScript, dan Tailwind CSS untuk performa optimal dan maintainability tinggi. Design modern dan responsive yang terlihat profesional namun santai, cocok untuk profil developer yang ingin tampil premium.",
+    "features": [
+      "Project Showcase",
+      "Experience Timeline",
+      "Skill Highlights",
+      "Contact Integration",
+      "Responsive Design",
+      "Performance Optimized",
+      "SEO Friendly"
+    ],
     "image": "portfolio.png",
     "live": "https://ppnawal.vercel.app/",
     "repo": "",
