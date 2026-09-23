@@ -1,130 +1,93 @@
-import { Link } from "react-router-dom";
-
 function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#0d1110] to-[#0a0f0e] border-t border-green-500/10">
-      <div className="max-w-6xl mx-auto px-8 py-20">
+    <footer className="bg-[#0a192f] border-t border-cyan-500/20">
+      <div className="max-w-7xl mx-auto px-8 py-12">
         <div className="grid md:grid-cols-3 gap-12">
-          {/* LEFT - ABOUT */}
+          {/* Brand */}
           <div>
-            <h3 className="text-white text-xl font-bold mb-2">
-              Muhammad Nabil F.
-            </h3>
-
-            <span className="text-green-400 text-sm tracking-widest">
-              WEB • DATA ANALYSIS • DATA ENTRY
-            </span>
-
-            <p className="text-gray-400 mt-4 leading-relaxed">
-              Delivering web development solutions, structured data analysis,
-              and accurate data entry services with attention to detail and
-              efficiency.
+            <div className="text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              &lt;Nabel Iskandar /&gt;
+            </div>
+            <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+              Full-Stack Developer dengan spesialisasi dalam sistem web modern, manajemen database, dan analisis data. Membangun solusi digital yang scalable dan efisien.
             </p>
           </div>
 
-          {/* MIDDLE - NAVIGATION */}
+          {/* Quick Links */}
           <div>
-            <h4 className="text-gray-300 font-semibold mb-4 tracking-wide">
-              NAVIGATION
-            </h4>
-
-            <div className="space-y-3 text-gray-400">
-              <Link to="/" className="block hover:text-green-400 transition">
-                Home
-              </Link>
-              {/* <Link
-                to="/experience"
-                className="block hover:text-green-400 transition"
-              >
-                Experience
-              </Link> */}
-              <Link
-                to="/projects"
-                className="block hover:text-green-400 transition"
-              >
-                Projects
-              </Link>
-              <Link
-                to="/contact"
-                className="block hover:text-green-400 transition"
-              >
-                Contact
-              </Link>
-            </div>
+            <h3 className="text-lg font-semibold mb-6 text-cyan-400">Navigasi</h3>
+            <ul className="space-y-3">
+              {[
+                { label: "Home", href: "/" },
+                { label: "Projects", href: "/projects" },
+                { label: "Experience", href: "/experience" },
+                { label: "Contact", href: "/contact" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="text-gray-300 hover:text-cyan-400 transition-colors text-sm"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {/* RIGHT - CONTACT */}
+          {/* Contact Info */}
           <div>
-            <h4 className="text-gray-300 font-semibold mb-4 tracking-wide">
-              CONTACT
-            </h4>
-
-            <div className="space-y-4">
-              {/* Email */}
-              <a
-                href="mailto:nabilfwz12@gmail.com"
-                className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
+            <h3 className="text-lg font-semibold mb-6 text-cyan-400">Hubungi</h3>
+            <div className="space-y-3 text-sm">
+              <p className="text-gray-300">
+                Email:{" "}
+                <a
+                  href="mailto:"
+                  className="text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
-                  <path d="M12 13.065 1.5 6.75V18a2 2 0 0 0 2 2h17a2 2 0 0 0 2-2V6.75L12 13.065z" />
-                  <path d="M12 10.935 22.5 4.5H1.5L12 10.935z" />
-                </svg>
-                nabilfwz12@gmail.com
-              </a>
-
-              {/* LinkedIn */}
-              <a
-                href="https://www.linkedin.com/in/nabelfwz/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                >
-                  <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.21 8.98H4.8V24H.21zM8.98 8.98h4.41v2.05h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 6.99V24h-4.59v-7.42c0-1.77-.03-4.05-2.47-4.05-2.47 0-2.85 1.93-2.85 3.93V24H8.98z" />
-                </svg>
-                linkedin.com/in/nabelfwz
-              </a>
-
-              {/* WhatsApp */}
-              <a
-                href="https://wa.me/6282377276027"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-gray-400 hover:text-green-400 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                >
-                  <path d="M20.52 3.48A11.91 11.91 0 0 0 12.03 0C5.39 0 .02 5.37.02 12c0 2.11.55 4.18 1.6 6.01L0 24l6.15-1.61A11.96 11.96 0 0 0 12.03 24C18.67 24 24 18.63 24 12c0-3.19-1.24-6.19-3.48-8.52z" />
-                </svg>
-                +62 823-7727-6027
-              </a>
+                  nabel@example.com
+                </a>
+              </p>
+              <p className="text-gray-300">
+                Status:{" "}
+                <span className="text-green-400 font-medium">Available for projects</span>
+              </p>
+              <p className="text-gray-400 italic text-xs">
+                Saat ini mencari klien untuk project web development dan sistem informasi.
+              </p>
             </div>
           </div>
         </div>
 
-        {/* BOTTOM LINE */}
-        <div className="mt-16 pt-6 border-t border-green-500/10 flex flex-col md:flex-row justify-between text-sm text-gray-500">
-          <div>© {new Date().getFullYear()} Nabil. All rights reserved.</div>
-
-          <div className="flex items-center gap-2 mt-4 md:mt-0">
-            <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-            Available for work
+        {/* Bottom Bar */}
+        <div className="mt-12 pt-8 border-t border-cyan-500/20 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Nabel Iskandar. Dibuat dengan React + Vite.
+          </p>
+          
+          {/* Social Links */}
+          <div className="flex gap-4">
+            {[
+              { name: "GitHub", icon: "🐙", url: "https://github.com" },
+              { name: "LinkedIn", icon: "💼", url: "https://linkedin.com" },
+              { name: "Instagram", icon: "📸", url: "https://instagram.com" },
+            ].map((social) => (
+              <a
+                key={social.name}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-cyan-400 transition-colors hover:scale-110"
+                title={social.name}
+              >
+                <span className="text-xl">{social.icon}</span>
+              </a>
+            ))}
           </div>
         </div>
+
+        {/* Glow effect */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-30" />
       </div>
     </footer>
   );
