@@ -1,80 +1,68 @@
 function Contact() {
   return (
-    <section className="max-w-4xl  mx-auto px-8 py-24 text-white">
-      <h2 className="text-4xl mt-10 font-bold mb-6 text-center">Get In Touch</h2>
+    <section className="max-w-4xl mx-auto px-8 py-24 text-white">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+          Get In Touch
+        </span>
+      </h2>
 
-      <p className="text-gray-400 text-center mb-12">
-        Feel free to reach out for collaboration, freelance work, or
-        professional opportunities.
+      <p className="text-gray-300 text-center mb-16 max-w-xl mx-auto">
+        Terbuka untuk kolaborasi, freelance project, atau peluang kerja. 
+        Mari bicarakan bagaimana saya bisa membantu bisnis Anda.
       </p>
 
-      <div className="bg-white/5 border border-green-500/10 rounded-2xl p-8 space-y-8">
-        {/* LinkedIn */}
-        <a
-          href="https://www.linkedin.com/in/nabelfwz/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between hover:text-green-400 transition"
-        >
-          <div className="flex items-center gap-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="w-6 h-6 text-gray-400"
-            >
-              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.11 1 2.49 1s2.49 1.12 2.49 2.5zM.21 8.98H4.8V24H.21zM8.98 8.98h4.41v2.05h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 6.99V24h-4.59v-7.42c0-1.77-.03-4.05-2.47-4.05-2.47 0-2.85 1.93-2.85 3.93V24H8.98z" />
-            </svg>
+      <div className="grid md:grid-cols-3 gap-6 mb-16">
+        {[
+          {
+            title: "LinkedIn",
+            value: "linkedin.com/in/nabelfwz",
+            href: "https://www.linkedin.com/in/nabelfwz/",
+            icon: "💼"
+          },
+          {
+            title: "Email",
+            value: "nabilfwz12@gmail.com",
+            href: "mailto:nabilfwz12@gmail.com",
+            icon: "📧"
+          },
+          {
+            title: "WhatsApp",
+            value: "0823-7727-6027",
+            href: "https://wa.me/6282377276027",
+            icon: "💬"
+          }
+        ].map((item, idx) => (
+          <a
+            key={idx}
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group bg-[#112240] p-6 rounded-2xl border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-cyan-500/20 text-center"
+          >
+            <div className="text-4xl mb-3 transform group-hover:scale-110 transition-transform">
+              {item.icon}
+            </div>
+            <h3 className="font-semibold text-cyan-400 mb-1">{item.title}</h3>
+            <p className="text-gray-400 text-xs truncate">{item.value}</p>
+          </a>
+        ))}
+      </div>
 
-            <span className="text-gray-300">linkedin.com/in/nabelfwz</span>
-          </div>
-
-          <span className="text-green-400">→</span>
-        </a>
-
-        {/* Email */}
-        <a
-          href="mailto:nabilfwz12@gmail.com"
-          className="flex items-center justify-between hover:text-green-400 transition"
-        >
-          <div className="flex items-center gap-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="w-6 h-6 text-gray-400"
-            >
-              <path d="M12 13.065 1.5 6.75V18a2 2 0 0 0 2 2h17a2 2 0 0 0 2-2V6.75L12 13.065z" />
-              <path d="M12 10.935 22.5 4.5H1.5L12 10.935z" />
-            </svg>
-
-            <span className="text-gray-300">nabilfwz12@gmail.com</span>
-          </div>
-
-          <span className="text-green-400">→</span>
-        </a>
-
-        {/* WhatsApp */}
+      {/* Info Card */}
+      <div className="bg-[#112240] p-8 rounded-2xl border border-cyan-500/20 text-center">
+        <h3 className="text-xl font-bold mb-4 text-cyan-400">
+          Status Ketersediaan
+        </h3>
+        <p className="text-gray-300 max-w-lg mx-auto mb-6">
+          Saat ini sedang mencari klien freelance untuk membangun portfolio startup IT. 
+          Siap untuk project baru dalam kurun waktu 1-2 minggu ke depan.
+        </p>
         <a
           href="https://wa.me/6282377276027"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-between hover:text-green-400 transition"
+          className="inline-block bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all hover:scale-105"
         >
-          <div className="flex items-center gap-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="w-6 h-6 text-gray-400"
-            >
-              <path d="M20.52 3.48A11.91 11.91 0 0 0 12.03 0C5.39 0 .02 5.37.02 12c0 2.11.55 4.18 1.6 6.01L0 24l6.15-1.61A11.96 11.96 0 0 0 12.03 24C18.67 24 24 18.63 24 12c0-3.19-1.24-6.19-3.48-8.52z" />
-            </svg>
-
-            <span className="text-gray-300">0823-7727-6027</span>
-          </div>
-
-          <span className="text-green-400">→</span>
+          Chat via WhatsApp
         </a>
       </div>
     </section>

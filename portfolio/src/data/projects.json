@@ -1,20 +1,62 @@
 [
   {
     "id": 1,
-    "title": "LMS Frontend System",
-    "description": "Learning Management System dashboard with structured UI and responsive layout.",
-    "image": "lms.png",
-    "live": "https://lms-frontend-fix-bismillah.vercel.app/",
+    "title": "Toko Frozen Food Online",
+    "description": "Full-stack e-commerce platform with authentication, product management, and checkout system. Currently running live for frozen food retail business.",
+    "image": "toko.png",
+    "live": "",
     "repo": "",
-    "tech": ["React", "Vite", "JavaScript", "Express.js", "MongoDB"]
+    "tech": ["Next.js", "Prisma", "NextAuth", "PostgreSQL", "Supabase", "Tailwind CSS"],
+    "status": "production"
   },
   {
     "id": 2,
-    "title": "Personal Portfolio Website",
-    "description": "Responsive personal branding portfolio built with modern frontend stack.",
+    "title": "SIMPEG BPVP",
+    "description": "Employee Management Information System with regional data integration and comprehensive admin dashboard.",
+    "image": "simpeg.png",
+    "live": "",
+    "repo": "",
+    "tech": ["Next.js", "Prisma", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+    "status": "near-completion"
+  },
+  {
+    "id": 3,
+    "title": "SSO Authentication Server",
+    "description": "Single Sign-On authentication server integrated with SIMPEG system for centralized user management.",
+    "image": "sso.png",
+    "live": "",
+    "repo": "",
+    "tech": ["Next.js", "Prisma", "TypeScript", "JWT", "PostgreSQL"],
+    "status": "near-completion"
+  },
+  {
+    "id": 4,
+    "title": "NFStore E-commerce",
+    "description": "Modern e-commerce platform with frontend and backend separation, product catalog, and user management.",
+    "image": "nfstore.png",
+    "live": "",
+    "repo": "",
+    "tech": ["Next.js", "Express.js", "React", "Node.js", "PostgreSQL"],
+    "status": "development"
+  },
+  {
+    "id": 5,
+    "title": "LMS Platform",
+    "description": "Learning Management System with course management, student dashboard, and progress tracking features.",
+    "image": "lms.png",
+    "live": "https://lms-frontend-fix-bismillah.vercel.app/",
+    "repo": "",
+    "tech": ["React", "Express.js", "MongoDB", "Vite", "JavaScript"],
+    "status": "production"
+  },
+  {
+    "id": 6,
+    "title": "Personal Portfolio",
+    "description": "Previous iteration of personal portfolio website with responsive design and project showcase.",
     "image": "ppnawal.png",
     "live": "https://ppnawal.vercel.app/",
     "repo": "",
-    "tech": ["Vite", "React", "Tailwind CSS", "TypeScript"]
+    "tech": ["React", "Vite", "Tailwind CSS", "TypeScript"],
+    "status": "production"
   }
 ]
